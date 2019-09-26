@@ -14,6 +14,8 @@ class GroupController extends Controller
     public function index()
     {
         //
+        $groups = DB::table('groups')->get();
+        return view('Group.index', ['groups' => $groups]);
     }
 
     /**
@@ -24,6 +26,7 @@ class GroupController extends Controller
     public function create()
     {
         //
+        return view('Group.create');
     }
 
     /**
@@ -35,6 +38,12 @@ class GroupController extends Controller
     public function store(Request $request)
     {
         //
+        $group = new Group;
+
+        $group->name = $request->name;
+        $group->decription = $request->description;
+
+        $group->save();
     }
 
     /**
@@ -57,6 +66,8 @@ class GroupController extends Controller
     public function edit($id)
     {
         //
+        $group = Group::where('id', '=', $id)->first();
+        return view('Group.update',['group' => $group] );
     }
 
     /**
@@ -69,6 +80,10 @@ class GroupController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $group = Group::where('id', '=', $id)->first();
+
+         $group->update($request->all());
+         return redirect('/groups');
     }
 
     /**
@@ -80,5 +95,9 @@ class GroupController extends Controller
     public function destroy($id)
     {
         //
+        $group = Group::find($id);
+        $group->delete();
+        DB::table('groups')->where('id',$id)->delete();
+        return redirect('/groups');
     }
 }
