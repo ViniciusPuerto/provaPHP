@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    public function city() {
+    protected $fillable = ['name', 'lat','lon'];
+
+    public function user() {
         return $this->belongsTo('App\User')->withDefault();
     }
 }

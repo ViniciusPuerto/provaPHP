@@ -31,7 +31,7 @@ class CityController extends Controller
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name', 'lat', 'lon'
     ];
     /**
      * Show the form for creating a new resource.
@@ -58,6 +58,8 @@ class CityController extends Controller
         $city = new City;
 
         $city->name = $request->name;
+        $city->lat = $request->lat;
+        $city->lon = $request->lon;
 
         $city->save();
         // return redirect('/cities');
@@ -83,6 +85,8 @@ class CityController extends Controller
     public function edit($id)
     {
         //
+        $city = City::where('id', '=', $id)->first();
+        return view('City.update',['city' => $city] );
     }
 
     /**
@@ -95,6 +99,13 @@ class CityController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+
+         $city = City::where('id', '=', $id)->first();
+
+         $city->update($request->all());
+         return redirect('/cities');
+
     }
 
     /**
@@ -105,6 +116,9 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $city = City::find($id);
+        $city->delete();
+        DB::table('cities')->where('id',$id)->delete();
+        return redirect('/cities');
     }
 }
