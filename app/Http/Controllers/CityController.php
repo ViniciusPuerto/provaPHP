@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
 
 class CityController extends Controller
 {
@@ -17,8 +21,18 @@ class CityController extends Controller
     public function index()
     {
         //
+        $cities = DB::table('cities')->get();
+        return view('City.index', ['cities' => $cities]);
     }
 
+      /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name'
+    ];
     /**
      * Show the form for creating a new resource.
      *
@@ -27,6 +41,9 @@ class CityController extends Controller
     public function create()
     {
         //
+        error_log('Creating');
+        return view('City.create');
+
     }
 
     /**
@@ -38,6 +55,12 @@ class CityController extends Controller
     public function store(Request $request)
     {
         //
+        $city = new City;
+
+        $city->name = $request->name;
+
+        $city->save();
+        // return redirect('/cities');
     }
 
     /**
