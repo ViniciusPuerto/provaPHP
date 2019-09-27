@@ -42,7 +42,7 @@ class CityPolicy
     public function create(User $user)
     {
         //
-        return $user->admin === true;
+        return $user->admin === 0;
     }
 
     /**
@@ -55,7 +55,7 @@ class CityPolicy
     public function update(User $user, City $city)
     {
         //
-        return $user->admin === true;
+        return $user->admin === 0;
     }
 
     /**
@@ -68,7 +68,7 @@ class CityPolicy
     public function delete(User $user, City $city)
     {
         //
-        return $user->admin === true;
+        return $user->admin === 0;
     }
 
     /**

@@ -44,4 +44,12 @@ class User extends Authenticatable
     public function city() {
         return $this->hasOne('App\City');
     }
+
+    public function is_administrator(): bool
+{
+       if (Auth::user()->admin == true) {
+           return true;
+       }
+       return false;
+}
 }

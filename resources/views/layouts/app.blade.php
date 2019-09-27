@@ -13,6 +13,7 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="http://localhost:80/cities">Cities</a></li>
                         <li><a href="http://localhost:80/groups">Groups</a></li>
+                        <li><a href="logout">Logout</a></li>
                     </ul>
                 </div>
             </nav>

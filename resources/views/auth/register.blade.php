@@ -39,6 +39,13 @@
                             </div>
                         </div>
 
+                        <p>
+                             <label>
+                                  <input type="checkbox" name="admin" />
+                                  <span>Is Admin</span>
+                             </label>
+                              </p>
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
