@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class GroupController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,7 @@ class GroupController extends Controller
     {
         //
         $groups = DB::table('groups')->get();
-        return view('Group.index', ['groups' => $groups]);
+        return view('Groups.index', ['groups' => $groups]);
     }
 
     /**
@@ -26,7 +32,7 @@ class GroupController extends Controller
     public function create()
     {
         //
-        return view('Group.create');
+        return view('Groups.create');
     }
 
     /**
@@ -41,11 +47,12 @@ class GroupController extends Controller
         $group = new Group;
 
         $group->name = $request->name;
-        $group->decription = $request->description;
+        $group->description = $request->description;
 
         $group->save();
     }
 
+    protected $fillable = ['name', 'description'];
     /**
      * Display the specified resource.
      *
@@ -67,7 +74,7 @@ class GroupController extends Controller
     {
         //
         $group = Group::where('id', '=', $id)->first();
-        return view('Group.update',['group' => $group] );
+        return view('Groups.update',['group' => $group] );
     }
 
     /**

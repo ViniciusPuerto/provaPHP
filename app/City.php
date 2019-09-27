@@ -9,6 +9,6 @@ class City extends Model
     protected $fillable = ['name', 'lat','lon'];
 
     public function user() {
-        return $this->belongsTo('App\User')->withDefault();
+        return $this->hasMany('App\User')->withDefault();
     }
 }

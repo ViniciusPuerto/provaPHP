@@ -36,4 +36,5 @@
                 @endforeach
         </tbody>
       </table>
+      <a href="/cities/create">Create City</a>
 @endsection
