@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','admin'
     ];
 
     /**
@@ -35,6 +35,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'admin' => 'boolean'
     ];
 
     public function user_group() {
@@ -46,10 +47,10 @@ class User extends Authenticatable
     }
 
     public function is_administrator(): bool
-{
+    {
        if (Auth::user()->admin == true) {
            return true;
        }
        return false;
-}
+    }
 }

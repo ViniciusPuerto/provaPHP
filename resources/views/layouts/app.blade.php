@@ -2,18 +2,18 @@
 
 <html>
     <head>
-        <title>App Name - @yield('title')</title>
+        <title> ProvaPHP - @yield('title')</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     </head>
     <body>
         @section('navbar')
             <nav>
-                <div class="nav-wrapper">
-                    <a href="" class="brand-logo">Prova</a>
+                <div class="nav-wrapper" style="background-color:lightgreen">
+                    <a href="" class="brand-logo center">ProvaPHP</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="http://localhost:80/cities">Cities</a></li>
-                        <li><a href="http://localhost:80/groups">Groups</a></li>
-                        <li><a href="logout">Logout</a></li>
+                        <li><a href="http://localhost:80/cities" style="color:black">Cities</a></li>
+                        <li><a href="http://localhost:80/groups" style="color:black">Groups</a></li>
+                        <li><a href="logout" style="color:red">Logout</a></li>
                     </ul>
                 </div>
             </nav>

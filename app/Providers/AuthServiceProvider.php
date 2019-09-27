@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\City;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
+use App\Policies\CityPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,6 +17,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
+        'App\City' => 'App\Policies\CityPolicy',
+        City::class => CityPolicy::class,
     ];
 
     /**

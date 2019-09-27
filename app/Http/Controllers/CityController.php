@@ -56,16 +56,16 @@ class CityController extends Controller
     public function store(Request $request, User $user)
     {
         //
-        $this->authorize('create', $user);
+
 
         $city = new City;
-
+        $this->authorize('create', $city);
         $city->name = $request->name;
         $city->lat = $request->lat;
         $city->lon = $request->lon;
 
         $city->save();
-        // return redirect('/cities');
+        return redirect('/cities');
     }
 
     /**
@@ -89,6 +89,7 @@ class CityController extends Controller
     {
         //
         $city = City::where('id', '=', $id)->first();
+
         return view('City.update',['city' => $city] );
     }
 
@@ -105,7 +106,7 @@ class CityController extends Controller
 
 
          $city = City::where('id', '=', $id)->first();
-
+         $this->authorize('update', $city);
          $city->update($request->all());
          return redirect('/cities');
 
@@ -119,7 +120,9 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
+
         $city = City::find($id);
+        $this->authorize('delete', $city);
         $city->delete();
         DB::table('cities')->where('id',$id)->delete();
         return redirect('/cities');

@@ -50,6 +50,7 @@ class GroupController extends Controller
         $group->description = $request->description;
 
         $group->save();
+        return redirect('/groups');
     }
 
     protected $fillable = ['name', 'description'];

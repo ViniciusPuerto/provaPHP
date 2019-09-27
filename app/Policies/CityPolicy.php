@@ -42,8 +42,10 @@ class CityPolicy
     public function create(User $user)
     {
         //
-        return $user->admin === 0;
+        return $user->admin === true;
     }
+
+
 
     /**
      * Determine whether the user can update the city.
@@ -55,7 +57,7 @@ class CityPolicy
     public function update(User $user, City $city)
     {
         //
-        return $user->admin === 0;
+        return $user->admin === true;
     }
 
     /**
@@ -68,7 +70,7 @@ class CityPolicy
     public function delete(User $user, City $city)
     {
         //
-        return $user->admin === 0;
+        return $user->admin === true;
     }
 
     /**

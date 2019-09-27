@@ -4,9 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+                <h3>Register</h3>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -39,13 +37,6 @@
                             </div>
                         </div>
 
-                        <p>
-                             <label>
-                                  <input type="checkbox" name="admin" />
-                                  <span>Is Admin</span>
-                             </label>
-                              </p>
-
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -68,6 +59,19 @@
                             </div>
                         </div>
 
+                        <p>
+                            <label>
+                                <input name="admin" type="radio"  value="1" checked />
+                                <span>Is Admin</span>
+                            </label>
+                            </p>
+                            <p>
+                            <label>
+                                <input name="admin" type="radio" value="0" />
+                                <span>Isn`t Admin</span>
+                            </label>
+                        </p>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -79,6 +83,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 @endsection
